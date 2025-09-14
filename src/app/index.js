@@ -1,8 +1,26 @@
-import { AntDesign } from '@expo/vector-icons';
 import { router } from 'expo-router';
-import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { useEffect, useState } from 'react';
+import { ActivityIndicator, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { initDb } from '../db/database';
 export default function Preload() {
- return (
+    const [dbInitialized, setDbInitialized] = useState(false);
+
+  useEffect(() => {
+    // Chama a função de inicialização do banco de dados
+    initDb();
+    setDbInitialized(true);
+  }, []); // O array vazio garante que a função só será executada uma vez
+
+  // Enquanto o banco não for inicializado, você pode mostrar uma tela de carregamento
+  if (!dbInitialized) {
+    return (
+      <View>
+        <ActivityIndicator size="large" color="#FDfffC" />
+      </View>
+    );
+  }
+
+  return (
    <View style={styles.container}>
     <View style={styles.content}>
         <Text style={styles.text}>
@@ -20,12 +38,14 @@ export default function Preload() {
         onPress={() => router.push('home')}
         >
           <Text style={styles.buttonText}>Vamos Lá</Text>
-        <AntDesign name="right" size={22} color="#41ead4" />
+       
       </TouchableOpacity>
     </View>
    </View>
   );
 }
+
+ 
 
 const styles = StyleSheet.create({
   container: {
@@ -51,10 +71,10 @@ const styles = StyleSheet.create({
     width: '90%',
     gap: 10,
     marginTop: 20,
-    justifyContent: 'space-between',
+    justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#0E2841',
-    paddingHorizontal: 30,
+    paddingHorizontal: 10,
     padding: 10,
     borderRadius: 8,
     borderWidth: 1,

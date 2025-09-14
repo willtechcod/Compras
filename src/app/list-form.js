@@ -22,13 +22,13 @@ export default function ListFormScreen() {
 
   const handleSave = () => {
     if (!listName.trim()) {
-      Alert.alert("Campo Vazio", "Por favor, digite um nome para a lista.");
+      Alert.alert("Campo Vazio", "Por favor, digite um nome de produto.");
       return;
     }
 
     if (isEditing) {
       const allLists = getLists();
-      const currentList = allLists.find(l => l.id.toString() === listId);
+      const currentList = allLists.find((l) => l.id.toString() === listId);
       if (currentList) {
         updateList(listId, listName, currentList.is_completed);
       }
@@ -40,12 +40,6 @@ export default function ListFormScreen() {
 
   return (
     <View style={styles.container}>
-        <View style={{ position: 'absolute', top: 40, left: 20 }}>
-          <TouchableOpacity style={styles.header} onPress={() => router.push('home')}>
-            <AntDesign name="left" size={24} color="#41ead4" />
-            <Text style={{color: '#41ead4'}}>Voltar</Text>
-          </TouchableOpacity>
-        </View>
       <View style={styles.content}>
         <Text style={styles.label}>Crie sua Lista:</Text>
         <TextInput
@@ -55,15 +49,18 @@ export default function ListFormScreen() {
           placeholder="Digite o produto da lista"
           placeholderTextColor={"#1d2e3e"}
         />
-        <Button title={isEditing ? "Atualizar Lista" : "Criar Lista"} onPress={handleSave} />
+        <Button
+          title={isEditing ? "Atualizar Lista" : "Criar Lista"}
+          onPress={handleSave}
+        />
       </View>
       <View style={styles.contentButton}>
         <TouchableOpacity
-        style={styles.addButton}
-        onPress={() => router.push('home')}
+          style={styles.addButton}
+          onPress={() => router.push("home")}
         >
-        <AntDesign name="arrow-left" size={50} color="#41ead4" />
-      </TouchableOpacity>
+          <AntDesign name="arrow-left" size={50} color="#41ead4" />
+        </TouchableOpacity>
       </View>
     </View>
   );

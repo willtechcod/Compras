@@ -20,15 +20,17 @@ export default function Home() {
 
   const handleDelete = (id) => {
     Alert.alert(
-      "Excluir Lista",
-      "Tem certeza que deseja excluir esta lista?",
+      "Excluir Item",
+      "Tem certeza que deseja excluir este item?",
       [
         { text: "Cancelar", style: "cancel" },
-        { text: "OK", onPress: () => {
+        {
+          text: "OK",
+          onPress: () => {
             deleteList(id);
             loadLists();
-          }
-        }
+          },
+        },
       ],
       { cancelable: true }
     );
@@ -71,31 +73,32 @@ export default function Home() {
 
   return (
     <View style={styles.container}>
-      <View >
-        <TouchableOpacity style={styles.header} onPress={() => router.push('preload')}>
-          <AntDesign name="left" size={24} color="#41ead4" />
-          <Text style={{color: '#41ead4'}}>Voltar</Text>
+      <View style={styles.content}>
+        <FlatList
+          data={lists}
+          keyExtractor={(item) => item.id.toString()}
+          renderItem={renderItem}
+          ListEmptyComponent={() => (
+            <View style={{ alignItems: "center", marginTop: 50 }}>
+              <Text style={styles.emptyText}>
+                Nenhum produto listado para seu carrinho.
+              </Text>
+              <AntDesign
+                name="shopping-cart"
+                size={60}
+                color="#FDfffC"
+                style={{ marginTop: 30 }}
+              />
+            </View>
+          )}
+        />
+        <TouchableOpacity
+          style={styles.addButton}
+          onPress={() => router.push("list-form")}
+        >
+          <AntDesign name="plus-circle" size={50} color="#41ead4" />
         </TouchableOpacity>
       </View>
-    <View style={styles.content}>  
-      <FlatList
-        data={lists}
-        keyExtractor={(item) => item.id.toString()}
-        renderItem={renderItem}
-        ListEmptyComponent={() => (
-          <View style={{ alignItems: 'center', marginTop: 50 }}>
-            <Text style={styles.emptyText}>Nenhum produto listado para seu carrinho.</Text>
-            <AntDesign name="shopping-cart" size={60} color="#FDfffC" style={{marginTop:30}}/>
-          </View>
-        )}
-        />
-      <TouchableOpacity
-        style={styles.addButton}
-        onPress={() => router.push('list-form')}
-        >
-        <AntDesign name="plus-circle" size={50} color="#41ead4" />
-      </TouchableOpacity>
-       </View>
     </View>
   );
 }

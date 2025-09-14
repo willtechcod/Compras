@@ -2,24 +2,16 @@ import { Stack } from 'expo-router';
 
 export default function Layout() {
   return (
-    <Stack screenOptions={{
-      headerStyle: { backgroundColor: '#0E2841' },
-      headerTintColor: '#FDfffC',
-      headerTitleStyle: { fontWeight: 'bold' },
-      contentStyle: { backgroundColor: '#0E2841' },
-      headerShown: false
-    }}>
-      <Stack.Screen
-        name="preload"
-        options={{ title: 'Carregando...' }}
-      />
+    <Stack>
+      <Stack.Screen name="index" options={{ headerShown: false }} />
       <Stack.Screen
         name="home"
+        options={{ title: "Sua Lista", headerShown: false }}
       />
       <Stack.Screen
         name="list-form"
+        options={{ title: "Adicione seu Item", headerShown: false }}
       />
-      
     </Stack>
   );
 }

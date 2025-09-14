@@ -1,7 +1,7 @@
 import * as SQLite from 'expo-sqlite';
 
 // Usa openDatabaseSync para obter o objeto de banco de dados síncrono
-const db = SQLite.openDatabaseSync('shoppingList.db');
+const db = SQLite.openDatabaseSync("../db/shoppingList.db");
 
 export const initDb = () => {
   try {
