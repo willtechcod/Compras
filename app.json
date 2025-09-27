@@ -1,0 +1,34 @@
+{
+  "expo": {
+    "name": "Compras",
+    "slug": "compras",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#0E2841"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#0E2841"
+      }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "b5f41efa-0079-49e8-93fb-2c9ba9d7eb05"
+      }
+    }
+  }
+}
