@@ -23,7 +23,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#0E2841"
-      }
+      },
+      "package": "com.willcode2019.compras"
     },
     "extra": {
       "eas": {
