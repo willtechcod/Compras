@@ -1,9 +1,9 @@
 {
   "compilerOptions": {
     "target": "esnext",
-    "module": "es2015",
+    "moduleResolution": "bundler",
     "lib": [
-      "ES2015",
+      "es6",
       "dom"
     ],
     "jsx": "react-native",
